@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/goliakshay357/auto-scaling#readme",
   "dependencies": {
+    "cpu-load": "^1.0.0",
     "express": "^4.17.2",
-    "ip": "^1.1.5"
+    "ip": "^1.1.5",
+    "sleep": "^6.3.0"
   }
 }
