@@ -1,7 +1,6 @@
 const express = require('express')
 const ip = require('ip');
 let cpu = require('cpu-load')
-const { sleep } = require('sleep');
 
 const app = express()
 const port = 3000
@@ -23,8 +22,7 @@ app.get('/load', async (req, res) => {
 
   app.get('/stress10', async (req, res) => {
     
-    sleep(10);
-    
+    await sleep(10*1000)
     res.status(200).json({
         message: "stress successfull for 10 secs",
         status: "success ✅",
@@ -33,9 +31,7 @@ app.get('/load', async (req, res) => {
   })
 
   app.get('/stress5', async (req, res) => {
-    
-    sleep(5);
-    
+    await sleep(5*1000)
     res.status(200).json({
         message: "stress successfull for 10 secs",
         status: "success ✅",
@@ -49,6 +45,12 @@ function load_cpu(){
             resolve(load)
           })
     })
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }
 
 app.listen(port, () => {
